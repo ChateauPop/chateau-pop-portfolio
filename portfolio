@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chateau POP! Event Decor - Balloon Artist Portfolio</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f8f4ff, #e8f5e8, #fff0f5, #f0f8ff);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header with popping animation */
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #6b5b95;
+            text-shadow: 2px 2px 4px rgba(107, 91, 149, 0.2);
+            margin-bottom: 20px;
+            animation: popIn 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #8e7cc3;
+            margin-bottom: 40px;
+            animation: slideUp 1s ease-out 0.5s both;
+            font-style: italic;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0) rotate(180deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(90deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Floating balloons */
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100px;
+            background: #d4c5f9;
+        }
+
+        .balloon-1 {
+            background: #d4c5f9;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .balloon-2 {
+            background: #b8e6b8;
+            top: 30%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .balloon-3 {
+            background: #ffd3e1;
+            top: 60%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .balloon-4 {
+            background: #c7e9f1;
+            top: 50%;
+            right: 8%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(-2deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        /* Portfolio section */
+        .portfolio {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(107, 91, 149, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 197, 249, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #6b5b95;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #d4c5f9, #b8e6b8);
+            border-radius: 2px;
+        }
+
+        /* Gallery grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(107, 91, 149, 0.2);
+            border-color: #d4c5f9;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 197, 249, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .gallery-item:hover::before {
+            left: 100%;
+        }
+
+        .balloon-art {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .art-title {
+            font-size: 1.5rem;
+            color: #6b5b95;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .art-description {
+            color: #8e7cc3;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            color: #b8e6b8;
+            font-weight: bold;
+            background: rgba(184, 230, 184, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        /* Services section */
+        .services {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(107, 91, 149, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 197, 249, 0.3);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f4ff, #fff0f5);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(212, 197, 249, 0.3);
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(107, 91, 149, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            color: #6b5b95;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .service-description {
+            color: #8e7cc3;
+            line-height: 1.5;
+        }
+
+        /* Testimonials section */
+        .testimonials {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(107, 91, 149, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 197, 249, 0.3);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f0f8ff, #f8f4ff);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(212, 197, 249, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(107, 91, 149, 0.15);
+            border-color: #d4c5f9;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(212, 197, 249, 0.3);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .stars {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .testimonial-text {
+            color: #6b5b95;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            text-align: center;
+            border-top: 2px solid rgba(212, 197, 249, 0.3);
+            padding-top: 15px;
+        }
+
+        .testimonial-author strong {
+            display: block;
+            color: #6b5b95;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-author span {
+            color: #8e7cc3;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Contact section */
+        .contact {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(107, 91, 149, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 197, 249, 0.3);
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #6b5b95;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #d4c5f9;
+            border-radius: 15px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #6b5b95;
+            box-shadow: 0 0 15px rgba(107, 91, 149, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #6b5b95, #8e7cc3);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(107, 91, 149, 0.3);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #8e7cc3;
+            font-style: italic;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .portfolio,
+            .services,
+            .contact {
+                padding: 40px 20px;
+                margin: 20px 0;
+            }
+
+            .balloon {
+                width: 40px;
+                height: 60px;
+            }
+
+            .balloon::after {
+                height: 60px;
+            }
+        }
+
+        /* Success message */
+        .success-message {
+            background: linear-gradient(135deg, #b8e6b8, #d4f4d4);
+            color: #2d5a2d;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating balloons -->
+    <div class="balloon balloon-1"></div>
+    <div class="balloon balloon-2"></div>
+    <div class="balloon balloon-3"></div>
+    <div class="balloon balloon-4"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">🎈 Chateau POP! 🎈</h1>
+            <p class="tagline">Transforming Events with Magical Balloon Artistry</p>
+        </header>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio">
+            <h2 class="section-title">Our Balloon Creations</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <span class="balloon-art">💐</span>
+                    <h3 class="art-title">Balloon Bouquets</h3>
+                    <p class="art-description">Elegant balloon arrangements that serve as beautiful centerpieces or gifts. Available in various themes and color schemes.</p>
+                    <div class="price">Starting at $45</div>
+                </div>
+
+                <div class="gallery-item">
+                    <span class="balloon-art">🎪</span>
+                    <h3 class="art-title">Grand Balloon Arches</h3>
+                    <p class="art-description">Stunning entrance arches that welcome guests with elegance and whimsy. Perfect for weddings, corporate events, and celebrations.</p>
+                    <div class="price">Starting at $299</div>
+                </div>
+
+                <div class="gallery-item">
+                    <span class="balloon-art">🎭</span>
+                    <h3 class="art-title">Themed Backdrops</h3>
+                    <p class="art-description">Instagram-worthy balloon walls and backdrops perfect for photo opportunities and creating memorable moments.</p>
+                    <div class="price">Starting at $399</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🎉</span>
+                    <h3 class="service-title">Event Decor</h3>
+                    <p class="service-description">Complete balloon decor planning and coordination for your special event from concept to cleanup.</p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🚚</span>
+                    <h3 class="service-title">Delivery & Setup</h3>
+                    <p class="service-description">Professional delivery and installation services ensuring your decorations are perfect and ready on time.</p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🎨</span>
+                    <h3 class="service-title">Custom Design</h3>
+                    <p class="service-description">Bespoke balloon artistry tailored to your vision, theme, and color preferences for truly unique celebrations.</p>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Chateau POP! transformed our wedding venue into a fairy tale! The balloon arch was absolutely stunning and our guests couldn't stop taking photos. Professional, creative, and worth every penny!"</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah & Michael</strong>
+                        <span>Wedding Reception</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The balloon bouquets for my daughter's sweet 16 were beyond beautiful! They matched our theme perfectly and lasted the entire party. The team was so easy to work with and delivered exactly what we envisioned."</p>
+                    <div class="testimonial-author">
+                        <strong>Jennifer Martinez</strong>
+                        <span>Birthday Celebration</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Our corporate event needed something special, and Chateau POP! delivered! The custom balloon backdrop with our company colors was the perfect photo opportunity for our team. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <strong>David Chen</strong>
+                        <span>Corporate Event</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"From consultation to cleanup, everything was perfect! The balloon decorations made our baby shower so magical. The attention to detail and quality of work exceeded our expectations."</p>
+                    <div class="testimonial-author">
+                        <strong>Amanda & James</strong>
+                        <span>Baby Shower</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The graduation party balloon setup was incredible! Our son felt so special, and the decorations created the perfect celebratory atmosphere. Thank you for making his day unforgettable!"</p>
+                    <div class="testimonial-author">
+                        <strong>Lisa Thompson</strong>
+                        <span>Graduation Party</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Professional, punctual, and absolutely creative! The balloon arrangements for our anniversary celebration were elegant and sophisticated. We'll definitely be using Chateau POP! for future events."</p>
+                    <div class="testimonial-author">
+                        <strong>Robert & Maria</strong>
+                        <span>Anniversary Celebration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2 class="section-title">Let's Create Magic Together</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="event-type">Event Type</label>
+                    <select id="event-type" name="event-type" required>
+                        <option value="">Select your event type</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="birthday">Birthday Party</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="baby-shower">Baby Shower</option>
+                        <option value="graduation">Graduation</option>
+                        <option value="anniversary">Anniversary</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Event Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <input type="number" id="guests" name="guests" min="1" placeholder="Approximate number">
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget Range</label>
+                    <select id="budget" name="budget">
+                        <option value="">Select your budget range</option>
+                        <option value="under-500">Under $500</option>
+                        <option value="500-1000">$500 - $1,000</option>
+                        <option value="1000-2500">$1,000 - $2,500</option>
+                        <option value="2500-5000">$2,500 - $5,000</option>
+                        <option value="over-5000">Over $5,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Tell us about your vision</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Describe your dream balloon decor, color preferences, theme, or any special requests..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send My Request ✨</button>
+                
+                <div class="success-message" id="successMessage">
+                    🎉 Thank you! We've received your request and will contact you within 24 hours to discuss your magical balloon event!
+                </div>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Chateau POP! Event Decor - Where Dreams Take Flight 🎈</p>
+            <p>Serving the greater metropolitan area with love, creativity, and lots of balloons!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data['event-type'] || !data.date) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Date validation (must be in the future)
+            const eventDate = new Date(data.date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (eventDate < today) {
+                alert('Please select a future date for your event.');
+                return;
+            }
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        });
+
+        // Add floating animation to gallery items on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all gallery items and service cards
+        document.querySelectorAll('.gallery-item, .service-card').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Add sparkle effect on button hover
+        document.querySelector('.submit-btn').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+
+        document.querySelector('.submit-btn').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+
+        // Dynamic balloon creation
+        function createRandomBalloon() {
+            const colors = ['#d4c5f9', '#b8e6b8', '#ffd3e1', '#c7e9f1', '#f9e79f', '#f8c8dc'];
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.left = Math.random() * 100 + '%';
+            balloon.style.top = '100%';
+            balloon.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            balloon.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.body.appendChild(balloon);
+            
+            // Remove balloon after animation
+            setTimeout(() => {
+                if (balloon.parentNode) {
+                    balloon.parentNode.removeChild(balloon);
+                }
+            }, 8000);
+        }
+
+        // Create random balloons periodically
+        setInterval(createRandomBalloon, 3000);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b0f3f3c07514c5',t:'MTc1OTg3NzM3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
